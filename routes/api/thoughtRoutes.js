@@ -5,16 +5,24 @@ const {
   createThoughts,
   updateThought,
   deleteThought,
+  addReaction,
+  removeReaction,
 } = require('../../controllers/thought');
 
-// /api/courses
-router.route('/').get(getThoughts).post(createThoughts);
+// /api/thought
+router.route('/')
+.get(getThoughts)
+.post(createThoughts);
 
-// /api/courses/:courseId
+// /api/thought/:thoughtId
 router
   .route('/:thoughtId')
   .get(getSingleThought)
   .put(updateThought)
-  .delete(deleteThought);
-
+  .delete(deleteThought),
+  // /api/thought/:thoughtId/reactions/:reactionId
+  router
+  .route('/:thoughtId/reaction/:reactionId')
+  .post(addReaction)
+  .delete(removeReaction)
 module.exports = router;
