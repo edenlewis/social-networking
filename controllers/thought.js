@@ -87,8 +87,8 @@ module.exports = {
 
     try {
       const reaction = await Thought.findOneAndUpdate(
-        { _id: req.params.reactionId },
-        { $addToSet: { friends: req.body } },
+        { _id: req.params.thoughtId },
+        { $addToSet: { reactions: req.body } },
         { runValidators: true, new: true }
       );
 
